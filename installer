@@ -1,0 +1,13 @@
+clear
+echo "Starting Installation Script for Planex-GW-USMicroN"
+sudo apt-get upate
+sudo apt-get wireless-tools install firmware-ralink
+cd /etc/
+sudo echo "snd-bcm2835" >> modules
+sudo echo "rt2800usb" >> modules
+cd /etc/modprobe.d/
+sudo touch gw-usmicron.conf
+sudo echo "install rt2800usb /sbin/modprobe --ignore-install rt2800usb; /bin/echo "2019 ed14" > /sys/bus/usb/drivers/rt2800usb/new_id" >> gw-usmicron.conf
+sudo modprobe rt2800usb
+clear
+echo "Installation complete. Please reboot your RaspberryPi."
